@@ -45,37 +45,33 @@ class _homeState extends State<home> {
               child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: (() {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = gender.male;
                     });
-                  }),
-                  child: ReusableCard(
-                    rang: selectedGender == gender.male
-                        ? inActive
-                        : activeCardColor,
-                    cardChild: Gender(
-                      label: 'Male',
-                      icon: FontAwesomeIcons.mars,
-                    ),
+                  },
+                  rang: selectedGender == gender.male
+                      ? inActive
+                      : activeCardColor,
+                  cardChild: Gender(
+                    label: 'Male',
+                    icon: FontAwesomeIcons.mars,
                   ),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: (() {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = gender.female;
                     });
-                  }),
-                  child: ReusableCard(
-                    rang: selectedGender == gender.female
-                        ? inActive
-                        : activeCardColor,
-                    cardChild:
-                        Gender(label: 'Female', icon: FontAwesomeIcons.venus),
-                  ),
+                  },
+                  rang: selectedGender == gender.female
+                      ? inActive
+                      : activeCardColor,
+                  cardChild:
+                      Gender(label: 'Female', icon: FontAwesomeIcons.venus),
                 ),
               ),
             ],
