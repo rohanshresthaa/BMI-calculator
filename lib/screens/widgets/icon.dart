@@ -1,3 +1,4 @@
+import 'package:bmi/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Gender extends StatelessWidget {
@@ -17,13 +18,7 @@ class Gender extends StatelessWidget {
         const SizedBox(
           height: 15.0,
         ),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 20.0,
-            color: Color(0xFFB9E0FF),
-          ),
-        ),
+        Text(label, style: labelText),
       ],
     );
   }
