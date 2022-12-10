@@ -1,8 +1,11 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 
+import 'package:bmi/screens/results.dart';
+import 'package:bmi/screens/widgets/BottomButton.dart';
 import 'package:bmi/screens/widgets/RoundButton.dart';
 import 'package:bmi/screens/widgets/icon.dart';
 import 'package:bmi/screens/widgets/reusableCard.dart';
+import 'package:bmi/utils/calculation.dart';
 import 'package:bmi/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -159,7 +162,7 @@ class _homeState extends State<home> {
                               RoundIconButton(
                                   onPress: (() {
                                     setState(() {
-                                      weight ++;
+                                      weight++;
                                     });
                                   }),
                                   icon: FontAwesomeIcons.plus),
@@ -188,7 +191,7 @@ class _homeState extends State<home> {
                               RoundIconButton(
                                 onPress: () {
                                   setState(() {
-                                   age--;
+                                    age--;
                                   });
                                 },
                                 icon: FontAwesomeIcons.minus,
@@ -199,7 +202,7 @@ class _homeState extends State<home> {
                               RoundIconButton(
                                   onPress: (() {
                                     setState(() {
-                                     age++;
+                                      age++;
                                     });
                                   }),
                                   icon: FontAwesomeIcons.plus),
@@ -212,14 +215,21 @@ class _homeState extends State<home> {
               ],
             ),
           ),
-          Container(
-            height: 70.0,
-            decoration: BoxDecoration(
-              color: bottomColor,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
+          ButtomButton(
+            buttonTitle: "CALCULATE",
+            onTap: (() {
+              Calculate calc = Calculate(height, weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultAnswer: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
+              );
+            }),
           ),
         ],
       ),
